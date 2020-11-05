@@ -3,4 +3,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @book =Book.new
   end
+  def index
+  end
 end

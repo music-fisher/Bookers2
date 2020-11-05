@@ -7,6 +7,8 @@ class BooksController < ApplicationController
     book.save
     redirect_to book_path(book.id)
   end
+  def index
+  end
   private
   def  book_params
     params.require(:book).permit(:title,:body)
