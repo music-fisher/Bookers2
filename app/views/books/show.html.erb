@@ -43,7 +43,7 @@
                             <%= link_to book.title,book_path(book) %>
                         </td>
                         <td><%= book.body %></td>
-                    <% if current_user == @book_detail.user %>    
+                    <% if current_user == @book_detail.user %>
                         <td><%= link_to "edit",edit_book_path(book) %></td>
                         <td><%= link_to "destroy",books_path, method: :delete %></td>
                     <% end %>
