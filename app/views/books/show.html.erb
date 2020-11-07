@@ -1,1 +1,55 @@
-<h2>Book detail</h2>
+<p id = "notice">
+ <%= notice %>
+</p>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3">
+            <h2>User info</h2>
+            <table>
+                <tbody>
+                    <tr><%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg',fallback: "no_image.jpg" %></tr>
+                    <tr>
+                        <th>name</th>
+                        <th><%= @user.name %></th>
+                    </tr>
+                    <tr>
+                        <th>introduction</th>
+                        <th>
+                            <%= link_to "#",edit_user_path(current_user.id) %>
+                        </th>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>New book</h2>
+            <%= form_with model:@book, local:true do |f| %>
+                <h4>Title</h4>
+                <%= f.text_field :title %>
+                <h4>Opinion</h4>
+                <%= f.text_area :body%>
+                <%= f.submit 'Create Book'%>
+            <% end %>
+        </div>
+        <div class="col-lg-9">
+            <h2>Book detail</h2>
+            <table>
+                <% @books.each do |book| %>
+                    <tr>
+                        <td>
+                         <%= attachment_image_tag @user, :profile_image, :fill, 50, 50, format: 'jpeg',fallback: "no_image.jpg" %>
+                         <%= link_to @user.name,user_path(book) %>
+                        </td>
+                        <td>
+                            <%= link_to book.title,book_path(book) %>
+                        </td>
+                        <td><%= book.body %></td>
+                    <% if current_user == @book_detail.user %>    
+                        <td><%= link_to "edit",edit_book_path(book) %></td>
+                        <td><%= link_to "destroy",books_path, method: :delete %></td>
+                    <% end %>
+                    </tr>
+                <% end %>
+            </table>
+        </div>
+    </div>
+</div>
