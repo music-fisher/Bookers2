@@ -1,0 +1,30 @@
+ <h2>User info</h2>
+            <table class="table">
+                <tbody>
+                    <tr><%= attachment_image_tag user, :profile_image, :fill, 100, 100, format: 'jpeg',fallback: "no_image.jpg" %></tr>
+                    <tr>
+                        <th>name</th>
+                        <th><%= user.name %></th>
+                    </tr>
+                    <tr>
+                        <th>introduction</th>
+                        <th><%= user.introduction %><th>
+                    </tr>
+                 </tbody>
+           </table>
+
+                    <%= link_to edit_user_path(current_user.id) do %>
+                        <button type="button" class="btn btn-default" aria-label="Left Align">
+                        <span class="col-xs-12 glyphicon glyphicon-wrench btn-block" aria-hidden="true"></span>
+                        </button>
+                    <% end %>
+
+            <h2>New book</h2>
+            <%= form_with model:book, local:true do |f| %>
+                <h4>Title</h4>
+                <%= f.text_field :title %>
+                <h4>Opinion</h4>
+                <%= f.text_area :body%>
+
+                <%= f.submit 'Create Book', class:"btn btn-primary btn-block" %>
+            <% end %>
