@@ -16,3 +16,29 @@
 //= require jquery
 //= require bootstrap-sprockets
 //= require_tree .
+
+var title = 'JavaScriptが使えました。';
+alert(title);
+
+$(function(){
+  $('.jquery').on('click',function(){
+    $(this).css('color','red');
+  });
+});
+
+$(document).ready(function () {
+
+  $("#theTarget").skippr({
+    
+    transition : 'slide',
+    speed : 1000,
+    easing : 'easeOutQuart',
+    navType : 'block',
+    childrenElementType : 'div',
+    arrows : true,
+    autoPlay : true,
+    autoPlayDuration : 3000,
+    keyboadOnAlways : true,
+    hidePrevious : false
+  });
+});
