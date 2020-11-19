@@ -57,7 +57,7 @@
                         <% end %>
             </table>            
                         <%= form_with(model: [@book_detail,@post_comment],local: true)  do |f| %>
-                            <%= f.text_area :post_comment %>
+                            <%= f.text_area :comment %>
                             <%= f.submit '送信'%>
                         <% end %>
                     <% if current_user == @book_detail.user %>
