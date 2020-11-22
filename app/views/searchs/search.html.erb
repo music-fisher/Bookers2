@@ -1,5 +1,5 @@
 <% if @model == '1' %>
-  <h2>"Users search for #{@content}"</h2>
+  <h2>Users search for "<%= @content %>"</h2>
 <% @records.each do |user| %>
 <table class="table">
                 <tr>
@@ -18,7 +18,7 @@
 </table>      
 <% end %>
   <% else @model == '2' %>
-  <h2>"Books search for #{content}" </h2>
+  <h2>"Books search for "<%= @content %>" </h2>
 <% @records.each do |book| %>
  <table class="table table-hover">
     <tr>
