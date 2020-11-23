@@ -1,0 +1,2 @@
+<!--$(#comments_area).html("<%#= j(render 'books/show',{book_detail: @book, post_comment: @comment})%>");-->
+$('#comments_area').html("<%= j(render partial: 'post_comments/comment', locals: {post_comment: @comment, book: @book, user: @user}) %>");

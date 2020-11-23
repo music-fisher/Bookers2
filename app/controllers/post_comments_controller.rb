@@ -1,24 +1,24 @@
 class PostCommentsController < ApplicationController
   def create
-    book = Book.find(params[:book_id])
+    @book = Book.find(params[:book_id])
     #comment = Post_comments.new(post_comment_params)
     #comment.user_id = current_user.id
-    comment = current_user.post_comments.new(post_comment_params)
-    comment.book_id = book.id
-    if comment.save
-    redirect_to book_path(book)
-    else
-    @book = Book.new
-    @book_detail = Book.find(params[:book_id])
-    @user = @book_detail.user
-    @books = @user.books
-    @post_comment = comment
-    render 'books/show'
-    end
+    @comment = current_user.post_comments.new(post_comment_params)
+    @comment.book_id = @book.id
+    @comment.save
+    @comment = PostComment.new
+    @user = @book.user
+
   end
+
   def destroy
-    PostComment.find_by(id: params[:id],book_id: params[:book_id]).destroy
-    redirect_to book_path(params[:book_id])
+    @book = Book.find(params[:book_id])
+    @comment = current_user.post_comments
+    PostComment.find(params[:id]).destroy
+    @user = @book.user
+    # PostComment.find_by(id: params[:id],book_id: params[:book_id]).destroy
+    # redirect_to book_path(params[:book_id])
+    @comment = PostComment.new
   end
 
   private
